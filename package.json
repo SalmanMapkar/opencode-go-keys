@@ -1,0 +1,57 @@
+{
+  "name": "opencode-go-keys",
+  "version": "1.0.0",
+  "description": "Sticky multi-key failover and usage dashboard for the opencode-go provider (OpenCode V2 plugin)",
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "opencode-go",
+    "api-keys",
+    "failover",
+    "rate-limits"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./tui": {
+      "types": "./dist/tui.d.ts",
+      "import": "./dist/tui.js",
+      "default": "./dist/tui.js"
+    }
+  },
+  "files": [
+    ".opencode",
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SalmanMapkar/opencode-go-keys.git"
+  },
+  "scripts": {
+    "prepack": "npm run build",
+    "build": "tsc -p tsconfig.json && node scripts/build-panel.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test \"test/*.test.ts\"",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "dependencies": {
+    "@opencode/plugin": "^2.0.18",
+    "@opentui/solid": "^0.6.0",
+    "solid-js": "^1.9.17"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}
